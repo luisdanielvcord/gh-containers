@@ -10,7 +10,11 @@ env:
 jobs:
   test:
     environment: testing
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest #This machine will now host the image, but the jobs will run in the container image
+    #container: node:16 #Can use publicly available images from dockerhub
+    container:
+      image: node:16
+      #env: #Can define env variables for the image
     env:
       MONGODB_CONNECTION_PROTOCOL: mongodb+srv
       MONGODB_CLUSTER_ADDRESS: cluster0.re6nb2c.mongodb.net
