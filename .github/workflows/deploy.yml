@@ -18,12 +18,15 @@ jobs:
     env:
       MONGODB_CONNECTION_PROTOCOL: mongodb #mongodb+srv
       MONGODB_CLUSTER_ADDRESS: mongodb #Establishes a network connection to the services db in the container
+      #MONGODB_CLUSTER_ADDRESS: 127.0.0.1:27017 use this to stablish a connection if containers are not being used
       MONGODB_USERNAME: root #${{ secrets.MONGODB_USERNAME }} Chaged to use the image db
       MONGODB_PASSWORD: example #${{ secrets.MONGODB_PASSWORD }} Chaged to use the image db
       PORT: 8080
     services:
       mongodb:
         image: mongo
+        #ports:
+          #- 27017:27017 use this to stablish a connection if containers are not being used
         env:
           MONGO_INITDB_ROOT_USERNAME: root
           MONGO_INITDB_ROOT_PASSWORD: example
